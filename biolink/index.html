@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jorgin Tattoos | Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <style>
+    /* Biolink Specific Styles */
+    body {
+      background-color: var(--color-black);
+      color: var(--color-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .biolink-container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Background image with overlay */
+    .biolink-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/images/blackwork.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      opacity: 0.15;
+    }
+
+    /* Header Profile */
+    .profile-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      gap: 1.5rem;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-title {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      line-height: 0.9;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .profile-title span {
+      color: var(--color-red);
+    }
+
+    .profile-desc {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+    
+    .profile-desc strong {
+      color: var(--color-white);
+      font-weight: 600;
+    }
+
+    .profile-image-container {
+      width: 130px;
+      height: 170px;
+      border-radius: 8px 30px 8px 30px;
+      overflow: hidden;
+      border: 2px solid var(--color-red);
+      flex-shrink: 0;
+    }
+
+    .profile-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Links Section */
+    .links-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .bio-link {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(31,31,31,0.9) 0%, rgba(20,20,20,0.9) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: var(--color-white);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .bio-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--color-red);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+      transform-origin: bottom;
+    }
+
+    .bio-link:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, rgba(40,40,40,0.95) 0%, rgba(25,25,25,0.95) 100%);
+      border-color: rgba(193, 18, 31, 0.3);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .bio-link:hover::before {
+      transform: scaleY(1);
+    }
+
+    .link-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(193, 18, 31, 0.1);
+      color: var(--color-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.25rem;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .bio-link:hover .link-icon {
+      background-color: var(--color-red);
+      color: var(--color-white);
+    }
+    
+    .link-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .link-content {
+      flex: 1;
+    }
+
+    .link-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.1rem;
+    }
+
+    .link-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .link-arrow {
+      color: #666;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .bio-link:hover .link-arrow {
+      color: var(--color-white);
+      border-color: var(--color-red);
+      background-color: var(--color-red);
+      transform: translateX(3px);
+    }
+
+    /* Footer / Stats */
+    .bio-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-item:not(:last-child) {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-white);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+    }
+    
+    .logo-mark {
+      text-align: center;
+      margin-top: 2rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: rgba(255,255,255,0.2);
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="biolink-bg"></div>
+  
+  <main class="biolink-container">
+    <header class="profile-section">
+      <div class="profile-info">
+        <h1 class="profile-title">Jorgin<br><span>Tattoos</span></h1>
+        <p class="profile-desc">Tatuador em Curitiba - PR. Tatuagens <strong>autorais</strong> criadas para representar o que faz sentido para você.</p>
+      </div>
+      <div class="profile-image-container">
+        <!-- Substituir imagem se necessário -->
+        <img src="/images/artist.jpg" alt="Jorgin Tattoos">
+      </div>
+    </header>
+
+    <div class="links-section">
+      <!-- Link 1: Whatsapp -->
+      <a href="https://wa.me/5541998520826?text=Ol%C3%A1%20vim%20pelo%20site%20e%20quero%20fazer%20uma%20tatuagem." class="bio-link" target="_blank">
+        <div class="link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </div>
+        <div class="link-content">
+          <div class="link-title">Conversar no WhatsApp</div>
+          <div class="link-subtitle">Agende sua tatuagem ou tire dúvidas</div>
+        </div>
+        <div class="link-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </a>
+
+      <!-- Link 2: Site -->
+      <a href="/" class="bio-link">
+        <div class="link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </div>
+        <div class="link-content">
+          <div class="link-title">Acessar Site</div>
+          <div class="link-subtitle">Conheça meu portfólio completo</div>
+        </div>
+        <div class="link-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </a>
+
+      <!-- Link 3: Avalie no Google -->
+      <!-- Trocar o link para a página de avaliações do Google correta -->
+      <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" class="bio-link" target="_blank">
+        <div class="link-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="link-content">
+          <div class="link-title">Avalie no Google</div>
+          <div class="link-subtitle">Deixe seu depoimento sobre a experiência</div>
+        </div>
+        <div class="link-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="bio-footer">
+      <div class="stat-item">
+        <div class="stat-value">+500</div>
+        <div class="stat-label">Tatuagens</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">5 Anos</div>
+        <div class="stat-label">Experiência</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">5.0</div>
+        <div class="stat-label">No Google</div>
+      </div>
+    </div>
+    
+    <div class="logo-mark">JT</div>
+  </main>
+</body>
+</html>
