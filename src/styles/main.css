@@ -354,6 +354,7 @@ img {
 
 .hero .headline {
   margin-bottom: var(--spacing-sm);
+  font-size: clamp(2.5rem, 6vw, 5rem);
 }
 
 .hero .subtext {

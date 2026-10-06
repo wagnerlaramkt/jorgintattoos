@@ -1,13 +1,8 @@
 export const content = {
   hero: {
     badge: "JORGIN TATTOO · CURITIBA — PR",
-    headline: {
-      line1: "SUA PELE.",
-      line2: "SUA HISTÓRIA.",
-      line3: "MINHA",
-      highlight: "ARTE."
-    },
-    subtext: "Tatuagens autorais criadas para representar aquilo que só faz sentido para você.",
+    headline: "Transforme sua Ideia<br>em uma Tatuagem<br><span class=\"highlight\">Exclusiva.</span>",
+    subtext: "Do primeiro rascunho à pele com técnica e precisão. Agende seu horário e garanta uma arte criada apenas para você.",
   },
   positioning: {
     title: "NÃO É APENAS UMA TATUAGEM.<br>É UMA PARTE DA SUA HISTÓRIA.",
@@ -33,7 +28,7 @@ export const content = {
   ],
   artist: {
     title: "POR TRÁS DA TINTA",
-    text: "Mais do que executar um desenho, meu trabalho é entender a ideia por trás de cada tatuagem e transformar essa ideia em algo que faça sentido na pele.",
+    text: "Desenho desde criança, influenciado por cartoons, animes e, mais tarde, pela música e pelo metalcore.<br><br>Comecei na tatuagem em 2020, de forma autodidata, e desde então venho construindo minha identidade artística. Em 2021, me mudei para Curitiba, onde continuei aprimorando meu trabalho.<br><br>O <strong>blackwork</strong> é a base da minha arte, explorando contrastes fortes e, cada vez mais, o vermelho como elemento de destaque. Gosto de criar tatuagens exclusivas, pensadas para cada pessoa, levando em consideração sua anatomia, composição e identidade.<br><br>Hoje, atendo em Curitiba e sigo trabalhando para levar minha arte cada vez mais longe, inclusive para fora do Brasil.",
     img: "/images/artist.jpg" // A imagem que você enviou deve ser colocada aqui!
   },
   process: [

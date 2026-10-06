@@ -20,7 +20,7 @@ function initData() {
   
   // Hero
   document.getElementById('hero-badge').innerHTML = content.hero.badge;
-  document.getElementById('hero-headline').innerHTML = `${content.hero.headline.line1}<br>${content.hero.headline.line2}<br>${content.hero.headline.line3} <span class="highlight">${content.hero.headline.highlight}</span>`;
+  document.getElementById('hero-headline').innerHTML = content.hero.headline;
   document.getElementById('hero-subtext').textContent = content.hero.subtext;
 
   // Positioning
@@ -63,7 +63,7 @@ function initData() {
 
   // Artist
   document.getElementById('artist-title').textContent = content.artist.title;
-  document.getElementById('artist-text').textContent = content.artist.text;
+  document.getElementById('artist-text').innerHTML = content.artist.text;
   document.getElementById('artist-loc').textContent = siteConfig.location;
   document.getElementById('artist-img').src = content.artist.img;
 
