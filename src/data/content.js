@@ -1,6 +1,6 @@
 export const content = {
   hero: {
-    badge: "JORGIN TATTOO · CURITIBA — PR",
+    badge: "JORGIN TATTOOS · CURITIBA — PR",
     headline: "Transforme sua Ideia<br>em uma Tatuagem<br><span class=\"highlight\">Exclusiva.</span>",
     subtext: "Do primeiro rascunho à pele com técnica e precisão. Agende seu horário e garanta uma arte criada apenas para você.",
   },

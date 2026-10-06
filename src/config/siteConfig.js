@@ -1,5 +1,5 @@
 export const siteConfig = {
-  artistName: "Jorgin Tattoo",
+  artistName: "Jorgin Tattoos",
   location: "Curitiba — PR",
   whatsappNumber: "5541998520826", // Ex: 5541999999999
   whatsappMessage: "Olá vim pelo site e quero fazer uma tatuagem.",
